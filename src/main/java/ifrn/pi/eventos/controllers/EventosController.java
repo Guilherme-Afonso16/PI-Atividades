@@ -16,23 +16,13 @@ public class EventosController {
 	
 	@RequestMapping("/eventos/form")
 	public String form() {
-		return "formEvento";
+		return "eventos/formEvento";
 	}
-	
-	@RequestMapping("/eventos/conf")
-	public String salvar(Evento evento) {
-		System.out.println("ABADABADUUUUUUUU");
-		System.out.println(evento.getNome());
-		System.out.println(evento.getLocal());
-		System.out.println(evento.getData());
-		System.out.println(evento.getHorario());
-		return "confirmar";
-	}
-	
+		
 	@PostMapping("/eventos")
 	public String adicionar(Evento evento) {
 		System.out.println(evento);
 		er.save(evento);
-		return "evento-adicionado";
+		return "eventos/evento-adicionado";
 	}
 }
