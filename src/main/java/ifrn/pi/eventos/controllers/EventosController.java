@@ -23,4 +23,3 @@ public class EventosController {
 		return "confirmar";
 	}
 }
-	
