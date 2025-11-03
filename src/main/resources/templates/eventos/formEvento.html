@@ -16,16 +16,19 @@
 		<form action="/eventos" method="post">
 
 			<div>
-				<label>Nome:</label> <input type="text" name="nome">
+				<input type="hidden" name="id" th:value="${evento.id}" readonly="readonly">
+				</div>
+			<div>
+				<label>Nome:</label> <input type="text" name="nome" th:value="${evento.nome}" required="required">
 			</div>
 			<div>
-				<label>Local:</label> <input type="text" name="local">
+				<label>Local:</label> <input type="text" name="local" th:value="${evento.local}" required="required">
 			</div>
 			<div>
-				<label>Data:</label> <input type="text" name="data">
+				<label>Data:</label> <input type="text" name="data" th:value="${evento.data}" required="required">
 			</div>
 			<div>
-				<label>Horário:</label> <input type="text" name="horario">
+				<label>Horário:</label> <input type="text" name="horario" th:value="${evento.horario}" required="required">
 			</div>
 			<div>
 				<button type="submit" class="waves-effect waves-light btn">Salvar</button>

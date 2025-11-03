@@ -27,7 +27,7 @@ public class EventosController {
 	private ConvidadoRepository cr;
 
 	@RequestMapping("/form")
-	public String form() {
+	public String form(Evento evento) {
 		return "eventos/formEvento";
 	}
 
@@ -119,5 +119,46 @@ public class EventosController {
 		
 		cr.delete(opt.get());
 		return "redirect:/eventos/" + idEvento;
+	}
+	
+	@GetMapping("/{id}/selecionar")
+	public ModelAndView selecionarEvento(@PathVariable Long id) {
+		
+		ModelAndView md = new ModelAndView();
+		Optional<Evento> opt = er.findById(id);
+		
+		if (opt.isEmpty()) {
+			md.setViewName("redirect:/eventos");
+			return md;
+		}
+		
+		Evento evento = opt.get();
+		md.setViewName("eventos/formEvento");
+		md.addObject("evento", evento);
+		return md;
+	}
+	
+	@GetMapping("/{idEvento}/convidados/{idConvidado/selecionar")
+	public ModelAndView selecionarConvidado(@PathVariable Long idEvento, @PathVariable Long idConvidado) {
+		
+		ModelAndView md = new ModelAndView();
+		
+		Optional<Evento> opt = er.findById(idEvento);
+		Optional<Convidado> optc = cr.findById(idConvidado);
+		
+		if (opt.isEmpty() || optc.isEmpty()) {
+			md.setViewName("redirect:/eventos");
+			return md;
+		}
+		
+		Evento evento = opt.get();
+		Convidado convidado = optc.get();
+		
+		if(evento.getId() != convidado.getEvento().getId()){
+			md.setViewName("redirect:/eventos");
+			return md;
+		}
+		
+		md.setViewName("evento/detalhes");
 	}
 }
