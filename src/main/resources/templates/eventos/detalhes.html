@@ -88,8 +88,8 @@
 									<td th:text="${c.nome}">Guilherme</td>
 									<td th:text="${c.rg}">123</td>
 									<td th:text="${c.numero}">123456789</td>
-									<td><a
-										th:href="@{/eventos/{id}/removerConvidado(id=${c.id})}"><i class="material-icons">delete</i></a></td>
+									<td><a th:href="@{/eventos/{idEvento}/convidados/{idConvidado}/selecionar(idEvento=${evento.id})}"><i class="material-icons">create	</i></a></td>
+									<td><a th:href="@{/eventos/{id}/removerConvidado(id=${c.id})}"><i class="material-icons">delete</i></a></td>
 								</tr>
 							</tbody>
 						</table>

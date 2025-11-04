@@ -138,7 +138,7 @@ public class EventosController {
 		return md;
 	}
 	
-	@GetMapping("/{idEvento}/convidados/{idConvidado/selecionar")
+	@GetMapping("/{idEvento}/convidados/{idConvidado}/selecionar")
 	public ModelAndView selecionarConvidado(@PathVariable Long idEvento, @PathVariable Long idConvidado) {
 		
 		ModelAndView md = new ModelAndView();
@@ -160,5 +160,8 @@ public class EventosController {
 		}
 		
 		md.setViewName("evento/detalhes");
+		md.addObject("convidado", convidado);
+		
+		return md;
 	}
 }
